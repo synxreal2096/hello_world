@@ -33,9 +33,9 @@ local library = {
     hovers = {},
     Relations = {},
     folders = {
-        main = "OneTap",
-        assets = "OneTap/Images",
-        configs = "OneTap/Configs"
+        main = "Fatality",
+        assets = "Fatality/Images",
+        configs = "Fatality/Configs"
     },
     shared = {
         initialized = false,
