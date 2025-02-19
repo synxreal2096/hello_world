@@ -1,4 +1,5 @@
-    local replicated_storage = cloneref(game:GetService("ReplicatedStorage"))
+local script = [[
+local replicated_storage = cloneref(game:GetService("ReplicatedStorage"))
                 local starter_gui = cloneref(game:GetService("StarterGui"))
                 local players = cloneref(game:GetService("Players"))
 
@@ -296,3 +297,5 @@
                         kek = v.Function
                     end
                 end
+]]
+return script
