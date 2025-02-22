@@ -34,7 +34,7 @@ local replicated_storage = cloneref(game:GetService("ReplicatedStorage"))
                         __index = function()
                             return function()
                                 --print("corescript", "waiter! waiter! a ban please!", str)
-                                return local_player:Kick("press F9, ban was triggered.")
+                                return local_player:Kick("anticheat tried to ban, but you are safe, please rejoin and re-execute the script.")
                             end
                         end,
                     })
