@@ -1,22 +1,23 @@
 local script = [[
+
 local replicated_storage = cloneref(game:GetService("ReplicatedStorage"))
-                local starter_gui = cloneref(game:GetService("StarterGui"))
-                local players = cloneref(game:GetService("Players"))
+local starter_gui = cloneref(game:GetService("StarterGui"))
+local players = cloneref(game:GetService("Players"))
 
-                local local_player = players.LocalPlayer
+local local_player = players.LocalPlayer
 
-                local selection = cloneref(game:GetService("Selection"))
-                local loading_screen = replicated_storage:WaitForChild("LoadingScreen")
+local selection = cloneref(game:GetService("Selection"))
+local loading_screen = replicated_storage:WaitForChild("LoadingScreen")
 
-                local admin_menu = Instance.new("ScreenGui")
-                admin_menu.Name = "AdminMenu"
-                admin_menu.Enabled = false
+local admin_menu = Instance.new("ScreenGui")
+admin_menu.Name = "AdminMenu"
+admin_menu.Enabled = false
 
-                local object = Instance.new("Frame")
-                object.Name = "AMain"
-                object.Parent = admin_menu
+local object = Instance.new("Frame")
+object.Name = "AMain"
+object.Parent = admin_menu
 
-                local ban_strings = {
+local ban_strings = {
                     string.char(
                         unpack(
                             string.split(
@@ -26,7 +27,7 @@ local replicated_storage = cloneref(game:GetService("ReplicatedStorage"))
                         )
                     ),
                 }
-                local console_bypassed = false
+          
                 local detection_up_function, debug_mode_function
 
                 local ban_hook = function(_, str)
@@ -41,13 +42,7 @@ local replicated_storage = cloneref(game:GetService("ReplicatedStorage"))
                 end
 
                 local offsets = {
-                    [698] = function(func) -- console detection
-                        hookfunction(func, function(...)
-                            return nil, nil, true
-                        end)
-                        console_bypassed = true
-                        --print("corescript", "bypassed actor console detections")
-                    end,
+             
                     [767] = function(func) -- detection upvalue, loading screen spawn function
                         detection_up_function = func
                         --print("corescript", "found detection stuff")
@@ -200,13 +195,11 @@ local replicated_storage = cloneref(game:GetService("ReplicatedStorage"))
                         end, func)
                     end
                 end
-                if not console_bypassed then
-                    return local_player:Kick("console bypass IS NOT working.")
-                end
+
 
                 for _, connection in getconnections(starter_gui.AttributeChanged) do
                     local func = connection.Function
-                    if func then
+                    if func then    
                         hookfunction(func, function(attribute)
                             local silly = starter_gui:GetAttribute(attribute)
                             --print("corescript", "starter gui", attribute, silly)
@@ -297,5 +290,6 @@ local replicated_storage = cloneref(game:GetService("ReplicatedStorage"))
                         kek = v.Function
                     end
                 end
+
 ]]
 return script
